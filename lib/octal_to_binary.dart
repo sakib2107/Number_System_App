@@ -132,7 +132,7 @@ class OctalToBinaryScreen extends StatelessWidget {
                 child: Column(
                   children: const [
                     Text(
-                      "265₈",
+                      "10101",
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
@@ -162,7 +162,7 @@ class OctalToBinaryScreen extends StatelessWidget {
                     SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        "Group binary digits in 3 from right to left, then convert each group to octal.",
+                        "Group of Octal right to left, then convert each group to Binary.",
                         style: TextStyle(fontSize: 13),
                       ),
                     ),
