@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BinaryToOctalScreen extends StatelessWidget {
-  const BinaryToOctalScreen({super.key});
+class OctalToBinaryScreen extends StatelessWidget {
+  const OctalToBinaryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

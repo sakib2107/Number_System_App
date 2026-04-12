@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'binary_to_octal.dart';
+import 'octal_to_binary.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -74,7 +75,11 @@ class Home extends StatelessWidget {
           },
           child: FeatureCard("Binary → Octal", Icons.numbers_outlined)
       ),
-      FeatureCard("Octal → Binary", Icons.swap_horiz),
+      InkWell(
+          onTap: (){
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>OctalToBinaryScreen()));
+          },
+          child: FeatureCard("Octal → Binary", Icons.swap_horiz)),
       FeatureCard("Hex → Binary", Icons.code),
       FeatureCard("Binary → Hex", Icons.code),
       FeatureCard("Decimal → Octal", Icons.calculate),
