@@ -14,7 +14,7 @@ class BinaryToHexScreen extends StatelessWidget {
         title: Center(
           child: Column(
               children: [
-                const Text("Binary → Hex",
+                const Text("Binary → Hexa",
                   style: TextStyle(
                       color: Colors.white
                   ),),
