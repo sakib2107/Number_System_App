@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
 
-class BinaryToHexScreen extends StatelessWidget {
-  const BinaryToHexScreen({super.key});
+class OctalToDecimalScreen extends StatelessWidget {
+  const OctalToDecimalScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +14,12 @@ class BinaryToHexScreen extends StatelessWidget {
         title: Center(
           child: Column(
               children: [
-                const Text("Binary → Hex",
+                const Text("Octal → Decimal",
                   style: TextStyle(
                       color: Colors.white
                   ),),
                 const SizedBox(height: 10),
-                const Text("Convert Binary Number to Hexa Number",
+                const Text("Convert Octal Number to Decimal",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 15
@@ -51,7 +51,7 @@ class BinaryToHexScreen extends StatelessWidget {
 
               // 🔹 Input Label
               const Text(
-                "Enter Binary Number",
+                "Enter Octal Number",
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
 
@@ -60,7 +60,7 @@ class BinaryToHexScreen extends StatelessWidget {
               // 🔹 Input Field
               TextField(
                 decoration: InputDecoration(
-                  hintText: "10110101",
+                  hintText: "123",
                   filled: true,
                   fillColor: const Color(0xFFF2F3F7),
                   border: OutlineInputBorder(
@@ -74,7 +74,7 @@ class BinaryToHexScreen extends StatelessWidget {
               const SizedBox(height: 6),
 
               const Text(
-                "(Allowed digits: 0, 1)",
+                "(Allowed digits: 0, 1 , 2 , 3 , 4 , 5 , 6 ,7)",
                 style: TextStyle(fontSize: 12, color: Colors.grey),
               ),
 
@@ -132,15 +132,16 @@ class BinaryToHexScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: const [
-                    // Text(
-                    //   style: TextStyle(
-                    //     fontSize: 26,
-                    //     fontWeight: FontWeight.bold,
-                    //   ),
-                    // ),
+                    Text(
+                      "123",
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     SizedBox(height: 4),
                     Text(
-                      "Hex Equivalent",
+                      "Octal Equivalent",
                       style: TextStyle(color: Colors.grey),
                     ),
                   ],
@@ -162,7 +163,7 @@ class BinaryToHexScreen extends StatelessWidget {
                     SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        "Group binary digits in 3 from right to left, then convert each group to octal.",
+                        "Group of Octal right to left, then convert each group to Binary.",
                         style: TextStyle(fontSize: 13),
                       ),
                     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home.dart';
 
 class OctalToBinaryScreen extends StatelessWidget {
   const OctalToBinaryScreen({super.key});
@@ -177,9 +178,16 @@ class OctalToBinaryScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: OutlinedButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(Icons.copy),
-                      label: const Text("Copy"),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Home(),
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.arrow_back),
+                      label: const Text("Back"),
                     ),
                   ),
                   const SizedBox(width: 12),

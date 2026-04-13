@@ -3,6 +3,8 @@ import 'binary_to_octal.dart';
 import 'octal_to_binary.dart';
 import 'decimal_to_octal.dart';
 import 'binary_to_hex.dart';
+import 'hex_to_binary.dart';
+import 'octal_to_decimal.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -89,7 +91,16 @@ class Home extends StatelessWidget {
                       },
                       child: FeatureCard("Octal → Binary", Icons.swap_horiz),
                     ),
-                    FeatureCard("Hex → Binary", Icons.code),
+                    InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HexToBinaryScreen(),
+                            ),
+                          );
+                        },
+                        child: FeatureCard("Hex → Binary", Icons.code)),
                     InkWell(
                       onTap: (){
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BinaryToHexScreen()),);
@@ -106,7 +117,16 @@ class Home extends StatelessWidget {
                       },
                       child: FeatureCard("Decimal → Octal", Icons.calculate),
                     ),
-                    FeatureCard("Octal → Decimal", Icons.calculate),
+                    InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OctalToDecimalScreen(),
+                            ),
+                          );
+                        },
+                        child: FeatureCard("Octal → Decimal", Icons.calculate)),
                   ],
                 ),
               ),
