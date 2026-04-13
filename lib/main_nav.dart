@@ -11,7 +11,7 @@ class MainNavScreen extends StatefulWidget {
 
 class _MainNavScreenState extends State<MainNavScreen> {
   int _selectedIndex=0;
-  List<Widget> _screens=[
+  final List<Widget> _screens=[
      Home(),
      About(),
   ];
@@ -28,8 +28,8 @@ class _MainNavScreenState extends State<MainNavScreen> {
           });
         },
         destinations: [
-          NavigationDestination(icon:Icon(Icons.home), label: 'New Task'),
-          NavigationDestination(icon:Icon(Icons.info), label: 'Completed'),
+          NavigationDestination(icon:Icon(Icons.home), label: 'Home'),
+          NavigationDestination(icon:Icon(Icons.info), label: 'About'),
         ],
       ),
     );
