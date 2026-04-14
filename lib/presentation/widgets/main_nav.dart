@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
-import 'about.dart';
+import '../screens/home.dart';
+import '../screens/about.dart';
 
 class MainNavScreen extends StatefulWidget {
   const MainNavScreen({super.key});

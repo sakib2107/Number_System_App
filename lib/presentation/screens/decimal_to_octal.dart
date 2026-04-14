@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main_nav.dart';
+import '../widgets/main_nav.dart';
 
 class DecimalToOctalScreen extends StatelessWidget {
   const DecimalToOctalScreen({super.key});

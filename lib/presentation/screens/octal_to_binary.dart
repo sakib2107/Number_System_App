@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'main_nav.dart';
+import '../widgets/main_nav.dart';
 
-class BinaryToOctalScreen extends StatelessWidget {
-  const BinaryToOctalScreen({super.key});
+class OctalToBinaryScreen extends StatelessWidget {
+  const OctalToBinaryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,20 +13,20 @@ class BinaryToOctalScreen extends StatelessWidget {
         backgroundColor: Colors.blue,
         title: Center(
           child: Column(
-           children: [
-             const Text("Binary → Octal",
-             style: TextStyle(
-               color: Colors.white
-             ),),
-             const SizedBox(height: 10),
-             const Text("Convert Binary Number to Octal",
-               style: TextStyle(
-                   color: Colors.white,
-                   fontSize: 15
-               ),),
-           ]),
+              children: [
+                const Text("Octal → Binary",
+                  style: TextStyle(
+                      color: Colors.white
+                  ),),
+                const SizedBox(height: 10),
+                const Text("Convert Octal Number to Binary",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15
+                  ),),
+              ]),
         ),
-           shape: const RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(20), // 👈 rounded bottom
           ),
@@ -46,21 +46,21 @@ class BinaryToOctalScreen extends StatelessWidget {
               //     style: TextStyle(color: Colors.grey),
               //   ),
               // ),
-        
+
               const SizedBox(height: 10),
-        
+
               // 🔹 Input Label
               const Text(
-                "Enter Binary Number",
+                "Enter Octal Number",
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
-        
+
               const SizedBox(height: 10),
-        
+
               // 🔹 Input Field
               TextField(
                 decoration: InputDecoration(
-                  hintText: "10110101",
+                  hintText: "123",
                   filled: true,
                   fillColor: const Color(0xFFF2F3F7),
                   border: OutlineInputBorder(
@@ -70,16 +70,16 @@ class BinaryToOctalScreen extends StatelessWidget {
                   suffixIcon: const Icon(Icons.close),
                 ),
               ),
-        
+
               const SizedBox(height: 6),
-        
+
               const Text(
-                "(Allowed digits: 0, 1)",
+                "(Allowed digits: 0, 1 , 2 , 3 , 4 , 5 , 6 ,7)",
                 style: TextStyle(fontSize: 12, color: Colors.grey),
               ),
-        
+
               const SizedBox(height: 16),
-        
+
               // 🔹 Convert Button + Swap Icon
               Row(
                 children: [
@@ -94,10 +94,10 @@ class BinaryToOctalScreen extends StatelessWidget {
                       ),
                       onPressed: () {},
                       child: const Text("Convert",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                      ),),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                        ),),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -111,17 +111,17 @@ class BinaryToOctalScreen extends StatelessWidget {
                   )
                 ],
               ),
-        
+
               const SizedBox(height: 24),
-        
+
               // 🔹 Result Title
               const Text(
                 "Result",
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
-        
+
               const SizedBox(height: 10),
-        
+
               // 🔹 Result Box
               Container(
                 width: double.infinity,
@@ -133,7 +133,7 @@ class BinaryToOctalScreen extends StatelessWidget {
                 child: Column(
                   children: const [
                     Text(
-                      "265₈",
+                      "10101",
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
@@ -147,9 +147,9 @@ class BinaryToOctalScreen extends StatelessWidget {
                   ],
                 ),
               ),
-        
+
               const SizedBox(height: 16),
-        
+
               // 🔹 How it works
               Container(
                 padding: const EdgeInsets.all(12),
@@ -163,16 +163,16 @@ class BinaryToOctalScreen extends StatelessWidget {
                     SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        "Group binary digits in 3 from right to left, then convert each group to octal.",
+                        "Group of Octal right to left, then convert each group to Binary.",
                         style: TextStyle(fontSize: 13),
                       ),
                     ),
                   ],
                 ),
               ),
-        
+
               SizedBox(height: 20,),
-        
+
               // 🔹 Bottom Buttons
               Row(
                 children: [

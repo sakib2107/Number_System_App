@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'main_nav.dart';
+import '../widgets/main_nav.dart';
 
-class OctalToBinaryScreen extends StatelessWidget {
-  const OctalToBinaryScreen({super.key});
+class OctalToDecimalScreen extends StatelessWidget {
+  const OctalToDecimalScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +14,12 @@ class OctalToBinaryScreen extends StatelessWidget {
         title: Center(
           child: Column(
               children: [
-                const Text("Octal → Binary",
+                const Text("Octal → Decimal",
                   style: TextStyle(
                       color: Colors.white
                   ),),
                 const SizedBox(height: 10),
-                const Text("Convert Octal Number to Binary",
+                const Text("Convert Octal Number to Decimal",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 15
@@ -133,7 +133,7 @@ class OctalToBinaryScreen extends StatelessWidget {
                 child: Column(
                   children: const [
                     Text(
-                      "10101",
+                      "123",
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
@@ -182,7 +182,7 @@ class OctalToBinaryScreen extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MainNavScreen (),
+                            builder: (context) => MainNavScreen(),
                           ),
                         );
                       },

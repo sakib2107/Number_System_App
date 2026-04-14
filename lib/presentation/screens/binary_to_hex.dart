@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'main_nav.dart';
+import '../provider/converter_provider.dart';
+import 'package:provider/provider.dart';
+import '../widgets/main_nav.dart';
 
-class HexToBinaryScreen extends StatelessWidget {
-  const HexToBinaryScreen ({super.key});
-
+class BinaryToHexScreen extends StatelessWidget {
+   BinaryToHexScreen({super.key});
+  final TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<BinaryToHexProvider>(context);
     return Scaffold(
       // 🔹 AppBar (Blue Header)
       appBar: AppBar(
@@ -14,12 +17,12 @@ class HexToBinaryScreen extends StatelessWidget {
         title: Center(
           child: Column(
               children: [
-                const Text("Hex → Binary",
+                const Text("Binary → Hex",
                   style: TextStyle(
                       color: Colors.white
                   ),),
                 const SizedBox(height: 10),
-                const Text("Convert Hex Number to Binary Number",
+                const Text("Convert Binary Number to Hexa Number",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 15
@@ -51,7 +54,7 @@ class HexToBinaryScreen extends StatelessWidget {
 
               // 🔹 Input Label
               const Text(
-                "Enter Hex Number",
+                "Enter Binary Number",
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
 
@@ -59,22 +62,30 @@ class HexToBinaryScreen extends StatelessWidget {
 
               // 🔹 Input Field
               TextField(
-                decoration: InputDecoration(
-                  hintText: "123",
+                  controller: controller,
+                  decoration: InputDecoration(
+                  hintText: "eg : 010",
                   filled: true,
                   fillColor: const Color(0xFFF2F3F7),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide.none,
                   ),
-                  suffixIcon: const Icon(Icons.close),
+                  suffixIcon: InkWell(
+                      onTap: () {
+                        if (controller.text.isNotEmpty) {
+                      controller.clear();
+                      provider.clear();
+                      }
+                      },
+                      child: Icon(Icons.close)),
                 ),
               ),
 
               const SizedBox(height: 6),
 
               const Text(
-                "(Allowed digits: 0 to 15)",
+                "(Allowed digits: 0, 1)",
                 style: TextStyle(fontSize: 12, color: Colors.grey),
               ),
 
@@ -92,7 +103,9 @@ class HexToBinaryScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        provider.convertBinaryToHex(controller.text);
+                      },
                       child: const Text("Convert",
                         style: TextStyle(
                           color: Colors.white,
@@ -100,15 +113,15 @@ class HexToBinaryScreen extends StatelessWidget {
                         ),),
                     ),
                   ),
-                  const SizedBox(width: 10),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFF2F3F7),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: const EdgeInsets.all(10),
-                    child: const Icon(Icons.swap_horiz),
-                  )
+                  // const SizedBox(width: 10),
+                  // Container(
+                  //   decoration: BoxDecoration(
+                  //     color: const Color(0xFFF2F3F7),
+                  //     borderRadius: BorderRadius.circular(10),
+                  //   ),
+                  //   padding: const EdgeInsets.all(10),
+                  //   child: const Icon(Icons.swap_horiz),
+                  // )
                 ],
               ),
 
@@ -131,16 +144,17 @@ class HexToBinaryScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Column(
-                  children: const [
+                  children: [
                     // Text(
                     //   style: TextStyle(
                     //     fontSize: 26,
                     //     fontWeight: FontWeight.bold,
                     //   ),
                     // ),
-                    SizedBox(height: 4),
-                    Text(
-                      "Binary Equivalent",
+                    const SizedBox(height: 4),
+                    Text("Result: ${provider.result}"),
+                    const Text(
+                      "Hex Equivalent",
                       style: TextStyle(color: Colors.grey),
                     ),
                   ],
@@ -162,7 +176,7 @@ class HexToBinaryScreen extends StatelessWidget {
                     SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        "Group binary digits in 3 from right to left, then convert each group to octal.",
+                        "In hexadecimal, each digit represents 4 bits (binary). So instead of converting long binary numbers directly, break them into groups of 4 bits and convert each group.",
                         style: TextStyle(fontSize: 13),
                       ),
                     ),
@@ -181,7 +195,7 @@ class HexToBinaryScreen extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MainNavScreen (),
+                            builder: (context) => MainNavScreen(),
                           ),
                         );
                       },
@@ -192,7 +206,10 @@ class HexToBinaryScreen extends StatelessWidget {
                   const SizedBox(width: 12),
                   Expanded(
                     child: OutlinedButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.clear();      // clear input field
+                        provider.clear();
+                      },
                       icon: const Icon(Icons.refresh),
                       label: const Text("Reset"),
                     ),
@@ -206,3 +223,4 @@ class HexToBinaryScreen extends StatelessWidget {
     );
   }
 }
+

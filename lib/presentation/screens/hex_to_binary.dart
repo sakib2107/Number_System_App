@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'main_nav.dart';
+import '../widgets/main_nav.dart';
 
-class OctalToDecimalScreen extends StatelessWidget {
-  const OctalToDecimalScreen({super.key});
+class HexToBinaryScreen extends StatelessWidget {
+  const HexToBinaryScreen ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +14,12 @@ class OctalToDecimalScreen extends StatelessWidget {
         title: Center(
           child: Column(
               children: [
-                const Text("Octal → Decimal",
+                const Text("Hex → Binary",
                   style: TextStyle(
                       color: Colors.white
                   ),),
                 const SizedBox(height: 10),
-                const Text("Convert Octal Number to Decimal",
+                const Text("Convert Hex Number to Binary Number",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 15
@@ -51,7 +51,7 @@ class OctalToDecimalScreen extends StatelessWidget {
 
               // 🔹 Input Label
               const Text(
-                "Enter Octal Number",
+                "Enter Hex Number",
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
 
@@ -74,7 +74,7 @@ class OctalToDecimalScreen extends StatelessWidget {
               const SizedBox(height: 6),
 
               const Text(
-                "(Allowed digits: 0, 1 , 2 , 3 , 4 , 5 , 6 ,7)",
+                "(Allowed digits: 0 to 15)",
                 style: TextStyle(fontSize: 12, color: Colors.grey),
               ),
 
@@ -132,16 +132,15 @@ class OctalToDecimalScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: const [
-                    Text(
-                      "123",
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    // Text(
+                    //   style: TextStyle(
+                    //     fontSize: 26,
+                    //     fontWeight: FontWeight.bold,
+                    //   ),
+                    // ),
                     SizedBox(height: 4),
                     Text(
-                      "Octal Equivalent",
+                      "Binary Equivalent",
                       style: TextStyle(color: Colors.grey),
                     ),
                   ],
@@ -163,7 +162,7 @@ class OctalToDecimalScreen extends StatelessWidget {
                     SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        "Group of Octal right to left, then convert each group to Binary.",
+                        "Group binary digits in 3 from right to left, then convert each group to octal.",
                         style: TextStyle(fontSize: 13),
                       ),
                     ),
@@ -182,7 +181,7 @@ class OctalToDecimalScreen extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MainNavScreen(),
+                            builder: (context) => MainNavScreen (),
                           ),
                         );
                       },
