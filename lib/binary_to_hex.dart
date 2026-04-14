@@ -71,7 +71,14 @@ class BinaryToHexScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide.none,
                   ),
-                  suffixIcon: const Icon(Icons.close),
+                  suffixIcon: InkWell(
+                      onTap: () {
+                        if (controller.text.isNotEmpty) {
+                      controller.clear();
+                      provider.clear();
+                      }
+                      },
+                      child: Icon(Icons.close)),
                 ),
               ),
 
@@ -106,15 +113,15 @@ class BinaryToHexScreen extends StatelessWidget {
                         ),),
                     ),
                   ),
-                  const SizedBox(width: 10),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFF2F3F7),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: const EdgeInsets.all(10),
-                    child: const Icon(Icons.swap_horiz),
-                  )
+                  // const SizedBox(width: 10),
+                  // Container(
+                  //   decoration: BoxDecoration(
+                  //     color: const Color(0xFFF2F3F7),
+                  //     borderRadius: BorderRadius.circular(10),
+                  //   ),
+                  //   padding: const EdgeInsets.all(10),
+                  //   child: const Icon(Icons.swap_horiz),
+                  // )
                 ],
               ),
 
@@ -169,7 +176,7 @@ class BinaryToHexScreen extends StatelessWidget {
                     SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        "Group binary digits in 3 from right to left, then convert each group to octal.",
+                        "In hexadecimal, each digit represents 4 bits (binary). So instead of converting long binary numbers directly, break them into groups of 4 bits and convert each group.",
                         style: TextStyle(fontSize: 13),
                       ),
                     ),
