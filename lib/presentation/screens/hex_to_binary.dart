@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/main_nav.dart';
 import '../widgets/back_button.dart';
 import '../widgets/reset_button.dart';
 import '../provider/converter_provider.dart';
@@ -96,7 +95,9 @@ class HexToBinaryScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        provider.hexToBinary(controller.text);
+                      },
                       child: const Text("Convert",
                         style: TextStyle(
                           color: Colors.white,
@@ -135,7 +136,7 @@ class HexToBinaryScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Column(
-                  children: const [
+                  children:[
                     // Text(
                     //   style: TextStyle(
                     //     fontSize: 26,
@@ -143,6 +144,7 @@ class HexToBinaryScreen extends StatelessWidget {
                     //   ),
                     // ),
                     SizedBox(height: 4),
+                    Text("Result: ${provider.result}"),
                     Text(
                       "Binary Equivalent",
                       style: TextStyle(color: Colors.grey),

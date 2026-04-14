@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../widgets/main_nav.dart';
 import '../widgets/back_button.dart';
 import '../widgets/reset_button.dart';
 import '../provider/converter_provider.dart';
@@ -97,7 +96,9 @@ class OctalToDecimalScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        provider.octalToDecimal(controller.text);
+                      },
                       child: const Text("Convert",
                         style: TextStyle(
                           color: Colors.white,
@@ -136,16 +137,17 @@ class OctalToDecimalScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Column(
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       "123",
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 4),
-                    Text(
+                    const SizedBox(height: 4),
+                    Text("Result: ${provider.result}"),
+                    const Text(
                       "Octal Equivalent",
                       style: TextStyle(color: Colors.grey),
                     ),

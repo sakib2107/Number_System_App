@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/main_nav.dart';
 import '../widgets/back_button.dart';
 import '../widgets/reset_button.dart';
 import '../provider/converter_provider.dart';
@@ -97,7 +96,10 @@ class BinaryToOctalScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed:()
+                           {
+                        provider.binaryToOctal(controller.text);
+                      },
                       child: const Text("Convert",
                       style: TextStyle(
                         color: Colors.white,
@@ -136,7 +138,7 @@ class BinaryToOctalScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Column(
-                  children: const [
+                  children: [
                     Text(
                       "265₈",
                       style: TextStyle(
@@ -145,6 +147,7 @@ class BinaryToOctalScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 4),
+                    Text("Result: ${provider.result}"),
                     Text(
                       "Octal Equivalent",
                       style: TextStyle(color: Colors.grey),
