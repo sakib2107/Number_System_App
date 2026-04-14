@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:number_system/converter_provider.dart';
+import 'package:provider/provider.dart';
 import 'main_nav.dart';
 
 class BinaryToHexScreen extends StatelessWidget {
-  const BinaryToHexScreen({super.key});
-
+   BinaryToHexScreen({super.key});
+  final TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<BinaryToHexProvider>(context);
     return Scaffold(
       // 🔹 AppBar (Blue Header)
       appBar: AppBar(
@@ -59,7 +62,8 @@ class BinaryToHexScreen extends StatelessWidget {
 
               // 🔹 Input Field
               TextField(
-                decoration: InputDecoration(
+                  controller: controller,
+                  decoration: InputDecoration(
                   hintText: "10110101",
                   filled: true,
                   fillColor: const Color(0xFFF2F3F7),
@@ -92,7 +96,9 @@ class BinaryToHexScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        provider.convertBinaryToHex(controller.text);
+                      },
                       child: const Text("Convert",
                         style: TextStyle(
                           color: Colors.white,
@@ -206,3 +212,4 @@ class BinaryToHexScreen extends StatelessWidget {
     );
   }
 }
+
