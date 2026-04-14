@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'main_nav.dart';
 
 class HexToBinaryScreen extends StatelessWidget {
   const HexToBinaryScreen ({super.key});
@@ -181,7 +181,7 @@ class HexToBinaryScreen extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Home(),
+                            builder: (context) => MainNavScreen (),
                           ),
                         );
                       },

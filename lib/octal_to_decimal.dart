@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'main_nav.dart';
 
 class OctalToDecimalScreen extends StatelessWidget {
   const OctalToDecimalScreen({super.key});
@@ -182,7 +182,7 @@ class OctalToDecimalScreen extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Home(),
+                            builder: (context) => MainNavScreen(),
                           ),
                         );
                       },

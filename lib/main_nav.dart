@@ -20,6 +20,7 @@ class _MainNavScreenState extends State<MainNavScreen> {
     return Scaffold(
       body: _screens[_selectedIndex],
       bottomNavigationBar: NavigationBar(
+        height: 55,
         selectedIndex: _selectedIndex,
         onDestinationSelected: (int index){
           _selectedIndex=index;
