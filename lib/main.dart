@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'converter_provider.dart';
 import 'package:provider/provider.dart';
-import 'presentation/screens/app.dart';
+import 'app.dart';
 
 void main() {
   runApp(

@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../widgets/main_nav.dart';
+import '../widgets/back_button.dart';
+import '../widgets/reset_button.dart';
+import '../provider/converter_provider.dart';
 
 class OctalToDecimalScreen extends StatelessWidget {
-  const OctalToDecimalScreen({super.key});
-
+  OctalToDecimalScreen({super.key});
+  final TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<NumberSystemProvider>(context);
     return Scaffold(
       // 🔹 AppBar (Blue Header)
       appBar: AppBar(
@@ -173,31 +178,12 @@ class OctalToDecimalScreen extends StatelessWidget {
 
               SizedBox(height: 20,),
 
-              // 🔹 Bottom Buttons
+              //  Bottom Buttons
               Row(
                 children: [
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MainNavScreen(),
-                          ),
-                        );
-                      },
-                      icon: const Icon(Icons.arrow_back),
-                      label: const Text("Back"),
-                    ),
-                  ),
+                  CustomBackButton(),
                   const SizedBox(width: 12),
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(Icons.refresh),
-                      label: const Text("Reset"),
-                    ),
-                  ),
+                  ResetButton(controller: controller, provider: provider),
                 ],
               ),
             ],
