@@ -64,7 +64,7 @@ class BinaryToHexScreen extends StatelessWidget {
               TextField(
                   controller: controller,
                   decoration: InputDecoration(
-                  hintText: "10110101",
+                  hintText: "eg : 010",
                   filled: true,
                   fillColor: const Color(0xFFF2F3F7),
                   border: OutlineInputBorder(
@@ -137,15 +137,16 @@ class BinaryToHexScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Column(
-                  children: const [
+                  children: [
                     // Text(
                     //   style: TextStyle(
                     //     fontSize: 26,
                     //     fontWeight: FontWeight.bold,
                     //   ),
                     // ),
-                    SizedBox(height: 4),
-                    Text(
+                    const SizedBox(height: 4),
+                    Text("Result: ${provider.result}"),
+                    const Text(
                       "Hex Equivalent",
                       style: TextStyle(color: Colors.grey),
                     ),
@@ -198,7 +199,10 @@ class BinaryToHexScreen extends StatelessWidget {
                   const SizedBox(width: 12),
                   Expanded(
                     child: OutlinedButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.clear();      // clear input field
+                        provider.clear();
+                      },
                       icon: const Icon(Icons.refresh),
                       label: const Text("Reset"),
                     ),
