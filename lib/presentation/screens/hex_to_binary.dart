@@ -62,6 +62,7 @@ class HexToBinaryScreen extends StatelessWidget {
 
               // 🔹 Input Field
               TextField(
+                controller: controller,
                 decoration: InputDecoration(
                   hintText: "123",
                   filled: true,

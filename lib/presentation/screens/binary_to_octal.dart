@@ -63,6 +63,7 @@ class BinaryToOctalScreen extends StatelessWidget {
         
               // 🔹 Input Field
               TextField(
+                controller: controller,
                 decoration: InputDecoration(
                   hintText: "10110101",
                   filled: true,
