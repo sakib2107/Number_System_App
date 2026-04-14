@@ -140,14 +140,6 @@ class BinaryToOctalScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    Text(
-                      "265₈",
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 4),
                     Text("Result: ${provider.result}"),
                     Text(
                       "Octal Equivalent",
