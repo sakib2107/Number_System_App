@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/back_button.dart';
+import '../widgets/result_show_screen.dart';
 import '../widgets/reset_button.dart';
 import '../provider/converter_provider.dart';
 import 'package:provider/provider.dart';
@@ -109,14 +110,7 @@ class BinaryToOctalScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFF2F3F7),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: const EdgeInsets.all(10),
-                    child: const Icon(Icons.swap_horiz),
-                  )
+
                 ],
               ),
         
@@ -138,15 +132,7 @@ class BinaryToOctalScreen extends StatelessWidget {
                   color: const Color(0xFFF2F3F7),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Column(
-                  children: [
-                    Text("Result: ${provider.result}"),
-                    Text(
-                      "Octal Equivalent",
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  ],
-                ),
+                child: ResultShow(provider: provider),
               ),
         
               const SizedBox(height: 16),
@@ -189,3 +175,4 @@ class BinaryToOctalScreen extends StatelessWidget {
     );
   }
 }
+

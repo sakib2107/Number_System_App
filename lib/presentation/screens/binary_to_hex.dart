@@ -15,7 +15,7 @@ class BinaryToHexScreen extends StatelessWidget {
       // 🔹 AppBar (Blue Header)
       appBar: AppBar(
         toolbarHeight: 120,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.green,
         title: Center(
           child: Column(
             children: [

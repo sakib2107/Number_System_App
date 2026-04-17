@@ -13,7 +13,7 @@ class _MainNavScreenState extends State<MainNavScreen> {
   int _selectedIndex=0;
   final List<Widget> _screens=[
      Home(),
-     About(),
+    AboutPage(),
   ];
   @override
   Widget build(BuildContext context) {

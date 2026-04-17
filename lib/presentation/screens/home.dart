@@ -6,6 +6,7 @@ import 'binary_to_hex.dart';
 import 'hex_to_binary.dart';
 import 'octal_to_decimal.dart';
 import '../widgets/feature_card.dart';
+import 'binary_addition_screen.dart';
 class Home extends StatelessWidget {
   const Home({super.key});
 
@@ -142,8 +143,17 @@ class Home extends StatelessWidget {
               const SizedBox(height: 10),
 
               Row(
-                children: const [
-                  Expanded(child: FeatureCard("Binary Addition", Icons.add)),
+                children:  [
+                  Expanded(child: InkWell(
+                      onTap: (){
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BinaryAdditionScreen(),
+                          ),
+                        );
+                      },
+                    child: FeatureCard("Binary Addition", Icons.add))),
                   SizedBox(width: 12),
                   Expanded(
                     child: FeatureCard("Binary Subtraction", Icons.remove),

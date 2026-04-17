@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'presentation/widgets/main_nav.dart';
+import 'presentation/screens/splash_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:MainNavScreen(),
+      home:SplashScreen(),
     );
   }
 }
