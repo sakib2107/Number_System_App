@@ -2,20 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/binary_addition_provider.dart';
 
-class BinaryAdditionScreen extends StatelessWidget {
+class BinaryAdditionScreen extends StatefulWidget {
+  const BinaryAdditionScreen({super.key});
+
+  @override
+  State<BinaryAdditionScreen> createState() =>
+      _BinaryAdditionScreenState();
+}
+
+class _BinaryAdditionScreenState extends State<BinaryAdditionScreen> {
+  final TextEditingController firstController = TextEditingController();
+  final TextEditingController secondController = TextEditingController();
+
+  @override
+  void dispose() {
+    firstController.dispose();
+    secondController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<BinaryStateProvider>(context);
 
     return Scaffold(
-      backgroundColor: Color(0xffF5F7FB),
+      backgroundColor: const Color(0xffF5F7FB),
       body: Column(
         children: [
-          // 🔵 Header (same as before)
+          // 🔵 Header
           Container(
             width: double.infinity,
-            padding: EdgeInsets.only(top: 60, bottom: 25),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.only(top: 60, bottom: 25),
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [Color(0xff4A90E2), Color(0xff357ABD)],
               ),
@@ -24,92 +42,146 @@ class BinaryAdditionScreen extends StatelessWidget {
                 bottomRight: Radius.circular(25),
               ),
             ),
-            child: Column(
+            child: const Column(
               children: [
-                Text("Binary Addition",
-                    style: TextStyle(color: Colors.white, fontSize: 22)),
-                Text("Add two Binary numbers",
-                    style: TextStyle(color: Colors.white70)),
+                Text(
+                  "Binary Addition",
+                  style: TextStyle(color: Colors.white, fontSize: 22),
+                ),
+                Text(
+                  "Add two Binary numbers",
+                  style: TextStyle(color: Colors.white70),
+                ),
               ],
             ),
           ),
 
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                buildInput("Enter First Binary Number",
-                        (val) => provider.setFirst(val)),
-                SizedBox(height: 12),
-                buildInput("Enter Second Binary Number",
-                        (val) => provider.setSecond(val)),
+                buildInput(
+                  controller: firstController,
+                  hint: "Enter First Binary Number",
+                  onChanged: (val) => provider.setFirst(val),
+                ),
+                const SizedBox(height: 12),
 
-                SizedBox(height: 20),
-
-                ElevatedButton(
-                  onPressed: provider.calculate,
-                  child: Text("Add"),
+                buildInput(
+                  controller: secondController,
+                  hint: "Enter Second Binary Number",
+                  onChanged: (val) => provider.setSecond(val),
                 ),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
+                // 🔵 Calculate Button
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      padding:
+                      const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    onPressed: () {
+                      provider.BinaryAdd();
+                    },
+                    child: const Text(
+                      "Convert",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                // 🔵 Result Box
                 if (provider.result.isNotEmpty)
                   Container(
-                    padding: EdgeInsets.all(16),
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
                       children: [
-                        Text(provider.result,
-                            style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold)),
-                        Text("Binary Result"),
+                        Text(
+                          provider.result,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const Text("Binary Result"),
                       ],
                     ),
                   ),
 
-                SizedBox(height: 15),
+                const SizedBox(height: 20),
 
+                // 🔵 Buttons Row
                 Row(
                   children: [
+                    // 🔙 Back Button
                     Expanded(
-                      child: OutlinedButton(
+                      child: ElevatedButton(
                         onPressed: () {
-                          // copy logic
+                          Navigator.pop(context);
                         },
-                        child: Text("Copy"),
+                        child: const Text("Back"),
                       ),
                     ),
-                    SizedBox(width: 10),
+
+                    const SizedBox(width: 12),
+
+                    // 🔄 Reset Button
                     Expanded(
-                      child: OutlinedButton(
-                        onPressed: provider.reset,
-                        child: Text("Reset"),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                        ),
+                        onPressed: () {
+                          firstController.clear();
+                          secondController.clear();
+                          provider.reset();
+                        },
+                        child: const Text("Reset"),
                       ),
                     ),
                   ],
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
   }
 
-  Widget buildInput(String hint, Function(String) onChanged) {
+  // 🔵 Input Field Widget
+  Widget buildInput({
+    required TextEditingController controller,
+    required String hint,
+    required Function(String) onChanged,
+  }) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
       ),
       child: TextField(
+        controller: controller,
         onChanged: onChanged,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(

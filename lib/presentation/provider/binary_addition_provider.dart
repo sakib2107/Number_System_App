@@ -17,7 +17,7 @@ class BinaryStateProvider extends ChangeNotifier {
     second = value;
   }
 
-  void calculate() {
+  void BinaryAdd() {
     if (!isBinary(first) || !isBinary(second)) {
       result = "Invalid input";
     } else {
