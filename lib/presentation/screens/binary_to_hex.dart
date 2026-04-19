@@ -201,7 +201,11 @@ class BinaryToHexScreen extends StatelessWidget {
       ),
     );
   }
+  void dispose() {
+    controller.dispose();
+  }
 }
+
 
 
 

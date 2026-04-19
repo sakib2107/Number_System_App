@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/back_button.dart';
 import 'package:provider/provider.dart';
 import '../provider/binary_addition_provider.dart';
 
@@ -26,35 +27,30 @@ class _BinaryAdditionScreenState extends State<BinaryAdditionScreen> {
     final provider = Provider.of<BinaryStateProvider>(context);
 
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 120,
+        backgroundColor: Colors.blue,
+        title: Center(
+          child: Column(
+            children: [
+              const Text("Binary Addition", style: TextStyle(color: Colors.white)),
+              const SizedBox(height: 10),
+              const Text(
+                "Add Two Binary Number",
+                style: TextStyle(color: Colors.white, fontSize: 15),
+              ),
+            ],
+          ),
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
+        ),
+      ),
       backgroundColor: const Color(0xffF5F7FB),
       body: Column(
         children: [
-          // 🔵 Header
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.only(top: 60, bottom: 25),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xff4A90E2), Color(0xff357ABD)],
-              ),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25),
-              ),
-            ),
-            child: const Column(
-              children: [
-                Text(
-                  "Binary Addition",
-                  style: TextStyle(color: Colors.white, fontSize: 22),
-                ),
-                Text(
-                  "Add two Binary numbers",
-                  style: TextStyle(color: Colors.white70),
-                ),
-              ],
-            ),
-          ),
 
           const SizedBox(height: 20),
 
@@ -132,30 +128,20 @@ class _BinaryAdditionScreenState extends State<BinaryAdditionScreen> {
                 // 🔵 Buttons Row
                 Row(
                   children: [
-                    // 🔙 Back Button
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text("Back"),
-                      ),
-                    ),
+                    CustomBackButton(),
 
                     const SizedBox(width: 12),
 
-                    // 🔄 Reset Button
+
                     Expanded(
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-                        ),
+                      child: OutlinedButton.icon(
                         onPressed: () {
                           firstController.clear();
                           secondController.clear();
                           provider.reset();
                         },
-                        child: const Text("Reset"),
+                        icon: const Icon(Icons.refresh),
+                        label: const Text("Reset"),
                       ),
                     ),
                   ],
