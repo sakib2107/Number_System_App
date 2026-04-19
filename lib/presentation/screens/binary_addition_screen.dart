@@ -124,7 +124,26 @@ class _BinaryAdditionScreenState extends State<BinaryAdditionScreen> {
                   ),
 
                 const SizedBox(height: 20),
-
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFEAF2FF),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    children: const [
+                      Icon(Icons.lightbulb, color: Colors.blue),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          "Remember, in binary addition whenever the sum reaches 2, write 0 and carry 1 to the next column",
+                          style: TextStyle(fontSize: 13),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
                 // 🔵 Buttons Row
                 Row(
                   children: [
