@@ -101,7 +101,7 @@ class _BinaryAdditionScreenState extends State<BinaryAdditionScreen> {
                 const SizedBox(height: 20),
 
                 // 🔵 Result Box
-                if (provider.result.isNotEmpty)
+               // if (provider.result.isNotEmpty)
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(16),
@@ -111,6 +111,7 @@ class _BinaryAdditionScreenState extends State<BinaryAdditionScreen> {
                     ),
                     child: Column(
                       children: [
+                        const Text("Binary Result"),
                         Text(
                           provider.result,
                           style: const TextStyle(
@@ -118,7 +119,6 @@ class _BinaryAdditionScreenState extends State<BinaryAdditionScreen> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Text("Binary Result"),
                       ],
                     ),
                   ),
